@@ -72,3 +72,22 @@
    chmod +x *.py
    ```
 
+3. Run catkin_make
+   ```sh
+   cd ..
+   catkin_make
+   ```
+
+### Configure the package and run
+
+1. Change the model folder location in the ros_openpose config
+   ```sh
+   gedit /home/root/catkin_ws/src/ros_openpose/launch/run.launch
+   line 16: change default value to "kinect"
+   line 38: change directory to /home/root/openpose/models/
+
+2. Run the package
+   ```sh
+   roslaunch ros_openpose run.launch
+   ```
+   ```
