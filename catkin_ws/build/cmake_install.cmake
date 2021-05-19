@@ -12,7 +12,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "")
+    set(CMAKE_INSTALL_CONFIG_NAME "Release")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -35,6 +35,11 @@ endif()
 # Is this installation the result of a crosscompile?
 if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
+endif()
+
+# Set default install directory permissions.
+if(NOT DEFINED CMAKE_OBJDUMP)
+  set(CMAKE_OBJDUMP "/usr/bin/objdump")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -131,6 +136,12 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/root/catkin_ws/build/gtest/cmake_install.cmake")
+  include("/home/root/catkin_ws/build/iai_kinect2/iai_kinect2/cmake_install.cmake")
+  include("/home/root/catkin_ws/build/ros_openpose/cmake_install.cmake")
+  include("/home/root/catkin_ws/build/iai_kinect2/kinect2_registration/cmake_install.cmake")
+  include("/home/root/catkin_ws/build/iai_kinect2/kinect2_bridge/cmake_install.cmake")
+  include("/home/root/catkin_ws/build/iai_kinect2/kinect2_calibration/cmake_install.cmake")
+  include("/home/root/catkin_ws/build/iai_kinect2/kinect2_viewer/cmake_install.cmake")
 
 endif()
 
