@@ -10,6 +10,7 @@
    ```sh
    sudo docker pull chanielden/ros-melodic-openpose
    ```
+   This docker has cuda 10.0 and cuDNN 7.5 installed.
    
 2. Clone this repo
    ```sh
@@ -29,6 +30,7 @@
    git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose
    cd openpose/
    git submodule update --init --recursive --remote
+   git checkout tags/v1.7.0
    ```
 2. Ensure cmake-gui is newer than version 3.12
 
@@ -38,11 +40,14 @@
    cd build/
    cmake-gui ..
    ```
-   Click configure. Select Unix Makefiles, you should see 'configuring done'. Then click Generate.
+   Click configure. Select Unix Makefiles, you should see 'configuring done'. 
+   Ensure BUILD_PYTHON is selected and the python paths are linked to py2.7.
+   Then click Generate.
 
 4. Compilation
    ```sh
    make -j`nproc`
+   make install
    ```
 
 5. Test that the installation works
@@ -52,5 +57,18 @@
    ./build/examples/openpose/openpose.bin --hand
    ```
 
+### Setting up catkin packages
 
+1. Enter the catkin_ws/src directory
+   ```sh
+   cd /home/root/catkin_ws/src
+   git clone https://github.com/code-iai/iai_kinect2.git
+   git clone https://github.com/ravijo/ros_openpose.git
+   ```
+
+2. Enable python scripts
+   ```sh
+   roscd ros_openpose/scripts
+   chmod +x *.py
+   ```
 

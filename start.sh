@@ -62,8 +62,8 @@ if [ ! -z "${DOCKER_ROBOT_FLAGS}" ]; then
 	ADDITIONAL_FLAGS="${ADDITIONAL_FLAGS} ${DOCKER_ROBOT_FLAGS}"
 fi
 
-IMAGE_NAME=chanielden/ros-melodic-openpose
-CONTAINER_NAME=ros-melodic-openpose${USER}
+IMAGE_NAME=chanielden/ros-melodic-openpose:latest
+CONTAINER_NAME=ros-melodic-openpose_${USER}
 
 echo Using container: $IMAGE_NAME
 
